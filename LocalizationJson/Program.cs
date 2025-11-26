@@ -2,26 +2,26 @@ using LocalizationJson.ServiceCollectionExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configure Swagger/OpenAPI - Learn more at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Localization - Languages
+// Localization configuration - Multi-language support
 builder.Services.AddLocalizationConfiguration();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Localization - Languages
+// Enable localization - Language middleware
 app.UseLocalizationConfiguraton();
 
 app.UseHttpsRedirection();

@@ -3,6 +3,9 @@ using Microsoft.Extensions.Localization;
 
 namespace Localization.Controllers
 {
+    /// <summary>
+    /// Controller responsible for demonstrating localization (i18n) usage
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class LocalizationController : ControllerBase
@@ -16,6 +19,9 @@ namespace Localization.Controllers
             _localizer = localizer;
         }
 
+        /// <summary>
+        /// Returns a simple localized greeting
+        /// </summary>
         [HttpGet]
         public IActionResult Get()
         {
@@ -23,6 +29,10 @@ namespace Localization.Controllers
             return Ok(message);
         }
 
+        /// <summary>
+        /// Returns a personalized welcome message with the provided name
+        /// </summary>
+        /// <param name="name">Name of the person to greet</param>
         [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
@@ -30,6 +40,9 @@ namespace Localization.Controllers
             return Ok(message);
         }
 
+        /// <summary>
+        /// Returns all localization strings available for the current language
+        /// </summary>
         [HttpGet("all")]
         public IActionResult GetAll()
         {
